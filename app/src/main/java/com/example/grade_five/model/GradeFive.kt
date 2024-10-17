@@ -1,5 +1,6 @@
 package com.example.grade_five.model
 
+import com.google.gson.annotations.SerializedName
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
@@ -7,7 +8,7 @@ import retrofit2.http.GET
 data class Success(val value: String)
 
 data class Joke(
-    val icon_url: String,
+    @SerializedName("icon_url") val iconUrl: String,
     val id: String,
     val url: String,
     val value: String

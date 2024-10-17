@@ -25,7 +25,7 @@ class GradeFiveViewModel: ViewModel() {
         getJoke()
     }
 
-    private fun getJoke() {
+    fun getJoke() {
         viewModelScope.launch {
             var jokesApi: JokesApi? = null
             try {
