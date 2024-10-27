@@ -4,6 +4,19 @@ Create a mobile app based on your own idea/topic.
 App could be displaying data retrieved from API service, or it could perform some calculation other software logic.
 As mentioned, you can make the app based on your OWN topic and app does not have to include all the features that are implemented on the example app.
 
+## My Idea
+
+I decided to create an app that displays random Chuck Norris jokes. The app has a main screen where the user can see a joke and a button to get a new joke.
+The app uses the [Chuck Norris API](https://api.chucknorris.io/) to get the jokes.
+
+The app has two screens: main and info. Main screen displays a random joke and info screen has information about the app.
+It uses Retrofit to fetch data from the API and displays it on the main screen. The app uses MVVM architecture and ViewModel class to hold the state and functionality for UI (composables).
+The UI is simple and suitable for mobile app. The theme is modified so the app does not use default values. All the strings are saved under strings.xml file.
+The app has implemented navigation and two screens. It uses API service and displays data retrieved from the service. The code is divided into separate files and packages.
+Possible errors are handled, for example, if API does not return anything or there is an error, a message is displayed.
+When data is loaded on the background, a custom spinner icon is displayed to the user on UI.
+It also displays an image using Coil library.
+
 ## Requirements
 
 App for grade 4 should have all features listed:
@@ -26,4 +39,4 @@ App for grade 5 should have all features listed for grade 4 and following:
 
 ## Implemented UI
 
-<img src="" alt="User Interface Main View" width="300"/>
+<img src="implemented_ui.png" alt="User Interface Main View" width="300"/>

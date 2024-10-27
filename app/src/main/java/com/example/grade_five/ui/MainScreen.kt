@@ -20,13 +20,14 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.grade_five.viewmodel.GradeFiveState
 import com.example.grade_five.viewmodel.GradeFiveViewModel
 import coil.compose.AsyncImage
+import com.example.grade_five.R
 
 
 @Composable
@@ -38,7 +39,7 @@ fun MainScreen(
 
     Scaffold(
         topBar = {
-            MainTopBar("Chuck Norris Jokes", navController)
+            MainTopBar(stringResource(R.string.topbar_app_name), navController)
         },
         content = { paddingValues ->
             Box(
@@ -59,7 +60,7 @@ fun MainScreen(
                         Column(
                             horizontalAlignment = Alignment.CenterHorizontally,
                             modifier = Modifier
-                                .padding(32.dp)
+                                .padding(16.dp)
                                 .background(MaterialTheme.colorScheme.secondaryContainer)
                                 .padding(16.dp),
                             verticalArrangement = Arrangement.Top
@@ -70,46 +71,53 @@ fun MainScreen(
                             ) {
                                 AsyncImage(
                                     model = joke.iconUrl,
-                                    contentDescription = "Chuck Norris Icon",
+                                    contentDescription = stringResource(R.string.image_content_description),
                                     modifier = Modifier.size(64.dp)
                                 )
                                 Spacer(modifier = Modifier.height(16.dp))
                                 Text(
                                     style = MaterialTheme.typography.headlineSmall,
-                                    text = "Joke of the day"
+                                    text = stringResource(R.string.main_screen_header)
                                 )
-                            }
-                            Spacer(modifier = Modifier.height(16.dp))
-                            Column(
-                                horizontalAlignment = Alignment.CenterHorizontally,
-                                modifier = Modifier.fillMaxWidth()
-                            ) {
+                                Spacer(modifier = Modifier.height(16.dp))
                                 Text(
-                                    style = MaterialTheme.typography.bodyLarge,
+                                    style = MaterialTheme.typography.bodyMedium,
                                     text = joke.value,
                                     textAlign = TextAlign.Center,
                                     modifier = Modifier
                                         .fillMaxWidth(0.7f)
                                 )
+                                Spacer(modifier = Modifier.height(16.dp))
                             }
-                            Spacer(modifier = Modifier.height(16.dp))
-                            Column {
-                                Button(
-                                    onClick = { viewModel.getJoke() },
-                                    colors = ButtonDefaults.buttonColors(
-                                        containerColor = MaterialTheme.colorScheme.secondary
-                                    )
-                                ) { Text("Get new joke") }
-                            }
-
                         }
                     }
                     is GradeFiveState.Error -> {
                         Text(
                             style = MaterialTheme.typography.bodyLarge,
-                            text = "Error fetching joke"
+                            text = stringResource(R.string.fetching_joke_error_message),
+                            modifier = Modifier.padding(16.dp),
+                            color = MaterialTheme.colorScheme.error
                         )
                     }
+                }
+                Spacer(modifier = Modifier.height(16.dp))
+                Button(
+                    onClick = { viewModel.getJoke() },
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = MaterialTheme.colorScheme.secondary,
+                        contentColor = MaterialTheme.colorScheme.primary
+                    ),
+                    modifier = Modifier
+                        .align(Alignment.BottomCenter)
+                        .fillMaxWidth()
+                        .padding(vertical = 16.dp)
+                        .padding(horizontal = 16.dp),
+                    shape = MaterialTheme.shapes.extraSmall
+                ) {
+                    Text(
+                        stringResource(R.string.get_a_new_joke_button),
+                        style = MaterialTheme.typography.bodyLarge
+                    )
                 }
             }
         }
