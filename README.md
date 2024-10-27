@@ -9,8 +9,7 @@ As mentioned, you can make the app based on your OWN topic and app does not have
 I decided to create an app that displays random Chuck Norris jokes.
 The app uses the [Chuck Norris API](https://api.chucknorris.io/) to get the jokes.
 
-The app has two screens: main and info. Main screen is where the user can see a joke and a button to get a new joke. Info screen has information about the app.
-It uses Retrofit to fetch the icon and joke data from the API and displays them on the main screen.
+The app has two screens: main and info. Main screen is where the user can see a joke and a button to get a new joke. It uses Retrofit to fetch the icon and joke data from the API and displays them on the main screen. Info screen has information about the app.
 
 The app uses MVVM architecture and ViewModel class to hold the state and functionality for UI (composables).
 The UI is simple and suitable for a mobile app. The theme is modified so the app does not use default values. 
